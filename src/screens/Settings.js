@@ -9,8 +9,6 @@ export const Settings = ({
     setModalConfiguracion,
 }) => {
 
-    const [modalExit, setModalExit] = useState(false);
-    const [modalLogin, setModalLogin] = useState(false);
 
     const handleLogOut = () => {
         Alert.alert("Cerrar Sesión", "¿Está seguro que desea cerrar sesión?", [
@@ -19,7 +17,7 @@ export const Settings = ({
                 onPress: () => console.log("Cancel Pressed"),
                 style: "cancel"
             },
-            { text: "OK", onPress: () => { setModalExit(true) } }
+            { text: "OK", }
         ]);
     };
 
@@ -38,7 +36,6 @@ export const Settings = ({
             <TouchableOpacity
                 onPress={() => {
                     handleLogOut();
-                    setModalConfiguracion(!modalConfiguracion);
                 }}
                 style={styles.logOut}
             >
