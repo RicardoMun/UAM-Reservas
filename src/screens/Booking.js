@@ -1,70 +1,80 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Modal, View, Text, StyleSheet, TouchableOpacity } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
 import { NavBar } from '../components/NavBar'
 import { MenuBar } from '../components/MenuBar'
 import { Ionicons } from 'react-native-vector-icons'
 import { StatusBar } from 'expo-status-bar';
+import { BookingForm } from './BookingForm'
 
 
 export const Booking = ({
-    modalReserva, 
+    modalReserva,
     setModalReserva
 }) => {
-  return (
 
-    <ScrollView>
-        <StatusBar style="auto" />
-        <Modal  animationType="slide" visible={modalReserva}>
-            <NavBar />
-                
-                <View style={styles.infoNav}>   
-                    <TouchableOpacity style={styles.button}  onPress={() => {setModalReserva(!modalReserva)}} >
+    const [modalReservaFormulario, setModalReservaFormulario] = useState(false);
+    return (
+
+        <ScrollView>
+            <StatusBar style="auto" />
+            <Modal animationType="slide" visible={modalReserva}>
+                <NavBar />
+
+                <View style={styles.infoNav}>
+                    <TouchableOpacity style={styles.button} onPress={() => { setModalReserva(!modalReserva) }} >
                         <Ionicons style={styles.IconStyle} name="arrow-back-circle-outline"></Ionicons>
                     </TouchableOpacity>
-                
+
                     <Text style={styles.textInfo}> Disponibilidad de Aulas </Text>
                     <Text style={styles.textInfo}>{" "}</Text>
                 </View>
-                
+
 
                 <Text style={styles.available}>Disponile</Text>
                 <Text style={styles.Occupied}>Ocupado</Text>
                 <Text style={styles.OutOfService}>Fuera de Servcio</Text>
-               
+
                 <Text style={styles.text}>En esta sección se mostrarán las aulas disponibles para reservar</Text>
-            
+
                 {/* grupos de botones para ir al form de reservas */}
                 <View style={styles.container}>
                     <View style={styles.horizontalButtons}>
-                        <TouchableOpacity style={styles.buttonRoom} onPress={() => {setModalReserva(!modalReserva)}} >
-                            <Text style={styles.buttonText}>Aula 1</Text>
+                        <TouchableOpacity style={styles.buttonRoom} onPress={() => { setModalReservaFormulario(true) }} >
+                            <Text style={styles.buttonText}>F-401</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity style={styles.buttonRoom} onPress={() => {setModalReserva(!modalReserva)}} >
-                            <Text style={styles.buttonText}>Aula 2</Text>
+
+                        <BookingForm
+                            modalReservaFormulario={modalReservaFormulario}
+                            setModalReservaFormulario={setModalReservaFormulario}
+                        >
+                        </BookingForm>
+
+                        <TouchableOpacity style={styles.buttonRoom} onPress={() => { setModalReserva(!modalReserva) }} >
+                            <Text style={styles.buttonText}>F-402</Text>
                         </TouchableOpacity>
                     </View>
                     <View style={styles.horizontalButtons}>
-                        <TouchableOpacity style={styles.buttonRoom} onPress={() => {setModalReserva(!modalReserva)}} >
-                            <Text style={styles.buttonText}>Aula 4</Text>
+                        <TouchableOpacity style={styles.buttonRoom} onPress={() => { setModalReserva(!modalReserva) }} >
+                            <Text style={styles.buttonText}>F-403</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity style={styles.buttonRoom} onPress={() => {setModalReserva(!modalReserva)}} >
-                            <Text style={styles.buttonText}>Aula 5</Text>
+                        <TouchableOpacity style={styles.buttonRoom} onPress={() => { setModalReserva(!modalReserva) }} >
+                            <Text style={styles.buttonText}>F-404</Text>
                         </TouchableOpacity>
                     </View>
                     <View style={styles.horizontalButtons}>
-                        <TouchableOpacity style={styles.buttonRoom} onPress={() => {setModalReserva(!modalReserva)}} >
-                            <Text style={styles.buttonText}>Aula 4</Text>
+                        <TouchableOpacity style={styles.buttonRoom} onPress={() => { setModalReserva(!modalReserva) }} >
+                            <Text style={styles.buttonText}>F-405</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity style={styles.buttonRoom} onPress={() => {setModalReserva(!modalReserva)}} >
-                            <Text style={styles.buttonText}>Aula 5</Text>
+                        <TouchableOpacity style={styles.buttonRoom} onPress={() => { setModalReserva(!modalReserva) }} >
+                            <Text style={styles.buttonText}>F-406</Text>
                         </TouchableOpacity>
                     </View>
                 </View>
-            <MenuBar />
-        </Modal>
-    </ScrollView>
-  )
+                <MenuBar />
+            </Modal>
+        </ScrollView>
+    )
 }
 
 const styles = StyleSheet.create({
@@ -119,6 +129,7 @@ const styles = StyleSheet.create({
         width: 170,
         justifyContent: 'center',
         alignItems: 'center',
+        padding: 10,
     },
     buttonText: {
         fontSize: 18,
