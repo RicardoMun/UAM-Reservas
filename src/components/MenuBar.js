@@ -39,7 +39,8 @@ const styles = StyleSheet.create({
     container: {
         position: 'relative',
         flex: 1,
-
+        marginTop: 70,
+        
     },
     content: {
         flex: 1,
@@ -56,8 +57,6 @@ const styles = StyleSheet.create({
         paddingHorizontal: 16,
         height: 70,
         backgroundColor: '#0069A3',
-        elevation: 2,
-        zIndex: 2,
     },
     iconButton: {
         padding: 12,
