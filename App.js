@@ -1,19 +1,20 @@
 import React from 'react';
 
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, ScrollView, View } from 'react-native';
+import { StyleSheet, ScrollView, View, SafeAreaView } from 'react-native';
 import { Home } from './src/screens/Home'
 import { Login } from './src/screens/Login'
 import { Booking } from './src/screens/Booking'
-
+import { BookingForm } from './src/screens/BookingForm'
 
 export default function App() {
   return (
-    <ScrollView>
+    <SafeAreaView>
       <StatusBar style="auto" />
       <Login />
-    {/* <Home></Home> */}
-    </ScrollView>
+      {/* <Home /> */}
+      {/* <BookingForm /> */}
+    </SafeAreaView>
   );
 }
 
