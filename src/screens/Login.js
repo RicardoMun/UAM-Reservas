@@ -51,7 +51,11 @@ export const Login = () => {
             });
     };
 
-    /* Función para iniciar sesión con Google usando auth de firebase */
+    /* Función para iniciar sesión con Google usando auth de firebase 
+        TODO: La ventana emergente para inicio de sesión con google
+        no funciona en el emulador de android, se debe probar en un dispositivo
+        físico o en un emulador de iOS
+    */
     const handleSignInGoogle = () => {
         const provider = new GoogleAuthProvider();
         signInWithPopup(auth, provider)
@@ -99,8 +103,8 @@ export const Login = () => {
             </View>
 
             {/* Botón de inicio de sesión haciendo el llamado
-          a la función handleSignIn que conecta con firebase 
-      */}
+                a la función handleSignIn que conecta con firebase 
+            */}
             <View style={styles.horizontalButtons}>
                 <TouchableOpacity
                     onPress={() => {
